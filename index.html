@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#1e1e2e">
-    <title>🧪 PluginLab Mobile</title>
+    <title>🧪 PluginLab PRO</title>
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Monaco Editor -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.min.css">
     
     <style>
@@ -34,11 +30,11 @@
             width: 100%;
         }
 
-        /* Header Mobile */
+        /* Header */
         header {
             background: #181825;
             border-bottom: 1px solid #313244;
-            padding: 12px 15px;
+            padding: 10px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,7 +51,6 @@
 
         .logo i {
             color: #00ff88;
-            font-size: 22px;
         }
 
         .logo span {
@@ -66,77 +61,140 @@
 
         .header-actions {
             display: flex;
-            gap: 8px;
+            gap: 5px;
         }
 
         .header-actions button {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 10px;
             border: none;
             background: #313244;
             color: #cdd6f4;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .header-actions button.btn-primary {
-            background: #00ff88;
-            color: #181825;
         }
 
         .header-actions button:active {
-            transform: scale(0.95);
+            background: #45475a;
         }
 
-        /* File Selector Mobile */
-        .file-selector {
+        /* Toolbar */
+        .toolbar {
             background: #181825;
-            padding: 10px 15px;
+            padding: 8px 12px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             border-bottom: 1px solid #313244;
             flex-shrink: 0;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
 
-        .file-selector::-webkit-scrollbar {
+        .toolbar::-webkit-scrollbar {
             display: none;
         }
 
-        .file-tab {
-            padding: 8px 16px;
+        .toolbar-btn {
+            padding: 8px 12px;
             background: #1e1e2e;
-            border-radius: 20px;
-            font-size: 14px;
+            border: 1px solid #313244;
+            border-radius: 8px;
+            color: #cdd6f4;
+            font-size: 13px;
             white-space: nowrap;
             cursor: pointer;
-            border: 1px solid #313244;
-            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .file-tab i {
-            margin-right: 6px;
+        .toolbar-btn i {
             font-size: 12px;
         }
 
-        .file-tab.active {
-            background: #00ff88;
-            color: #181825;
-            border-color: #00ff88;
+        .toolbar-btn:active {
+            background: #313244;
         }
 
-        .file-tab .fa-java {
-            color: #f9e2af;
+        .toolbar-btn.warning {
+            border-color: #f38ba8;
+            color: #f38ba8;
         }
 
-        .file-tab.active .fa-java {
-            color: #181825;
+        /* File Tabs */
+        .file-tabs {
+            background: #181825;
+            padding: 0 12px;
+            display: flex;
+            gap: 2px;
+            border-bottom: 1px solid #313244;
+            flex-shrink: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            min-height: 40px;
+        }
+
+        .file-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            padding: 10px 12px;
+            background: #1e1e2e;
+            border: 1px solid #313244;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            font-size: 12px;
+            white-space: nowrap;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 2px;
+            color: #6c7086;
+        }
+
+        .tab.active {
+            background: #1e1e2e;
+            color: #00ff88;
+            border-color: #00ff88 #313244 #1e1e2e;
+        }
+
+        .tab i {
+            font-size: 12px;
+        }
+
+        .tab .close-tab {
+            margin-left: 5px;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .tab .close-tab:active {
+            background: #313244;
+            color: #f38ba8;
+        }
+
+        .add-tab {
+            padding: 10px 15px;
+            background: #1e1e2e;
+            border: 1px solid #313244;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #6c7086;
+        }
+
+        .add-tab:active {
+            background: #313244;
+            color: #00ff88;
         }
 
         /* Editor Container */
@@ -152,74 +210,74 @@
             height: 100%;
         }
 
-        /* Console Mobile */
+        /* Console */
         .console {
             background: #181825;
             border-top: 1px solid #313244;
             flex-shrink: 0;
-            max-height: 180px;
+            max-height: 150px;
             display: flex;
             flex-direction: column;
         }
 
         .console-header {
-            padding: 8px 15px;
+            padding: 6px 12px;
             background: #1e1e2e;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #313244;
-            font-size: 13px;
+            font-size: 12px;
         }
 
-        .console-header i {
+        .console-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .console-actions i {
             cursor: pointer;
             color: #6c7086;
-            padding: 5px;
+            padding: 3px;
         }
 
-        .console-header i:active {
-            color: #f38ba8;
+        .console-actions i:active {
+            color: #00ff88;
         }
 
         .console-content {
-            padding: 10px 15px;
+            padding: 8px 12px;
             font-family: 'Menlo', 'Monaco', monospace;
-            font-size: 11px;
+            font-size: 10px;
             overflow-y: auto;
-            color: #00ff88;
-            line-height: 1.5;
-            max-height: 150px;
+            color: #a6e3a1;
+            line-height: 1.4;
+            max-height: 130px;
             -webkit-overflow-scrolling: touch;
         }
 
-        /* Bottom Actions */
-        .bottom-actions {
+        /* Bottom Bar */
+        .bottom-bar {
             background: #181825;
-            padding: 10px 15px;
+            padding: 8px 12px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             border-top: 1px solid #313244;
             flex-shrink: 0;
         }
 
-        .bottom-actions button {
+        .bottom-bar button {
             flex: 1;
-            padding: 14px;
+            padding: 12px;
             border: none;
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 10px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .bottom-actions button:active {
-            transform: scale(0.98);
+            gap: 6px;
         }
 
         .btn-compile {
@@ -236,19 +294,155 @@
             opacity: 0.5;
         }
 
-        /* Autor Badge */
-        .author-badge {
-            text-align: center;
-            padding: 5px;
-            font-size: 11px;
-            color: #6c7086;
-            background: #181825;
-            flex-shrink: 0;
+        .btn-run {
+            background: #89b4fa;
+            color: #181825;
         }
 
-        .author-badge i {
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1e1e2e;
+            border-radius: 16px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid #313244;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
             color: #00ff88;
-            margin: 0 3px;
+            font-size: 18px;
+        }
+
+        .modal-header i {
+            color: #6c7086;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .modal-body input {
+            width: 100%;
+            padding: 14px;
+            background: #181825;
+            border: 1px solid #313244;
+            border-radius: 10px;
+            color: #cdd6f4;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body select {
+            width: 100%;
+            padding: 14px;
+            background: #181825;
+            border: 1px solid #313244;
+            border-radius: 10px;
+            color: #cdd6f4;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body button {
+            width: 100%;
+            padding: 14px;
+            background: #00ff88;
+            border: none;
+            border-radius: 10px;
+            color: #181825;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Context Menu */
+        .context-menu {
+            position: fixed;
+            background: #1e1e2e;
+            border: 1px solid #313244;
+            border-radius: 10px;
+            padding: 5px;
+            display: none;
+            z-index: 9999;
+            min-width: 180px;
+        }
+
+        .context-menu.active {
+            display: block;
+        }
+
+        .context-item {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cdd6f4;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .context-item:active {
+            background: #313244;
+        }
+
+        .context-item i {
+            width: 20px;
+            color: #00ff88;
+        }
+
+        .context-divider {
+            height: 1px;
+            background: #313244;
+            margin: 5px 0;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 15px;
+            right: 15px;
+            background: #313244;
+            color: #cdd6f4;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            z-index: 10000;
+            animation: slideUp 0.3s;
+            border-left: 4px solid #00ff88;
+        }
+
+        .toast.error {
+            border-left-color: #f38ba8;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         /* Loading */
@@ -262,7 +456,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
+            z-index: 99999;
         }
 
         .loading-spinner {
@@ -278,26 +472,55 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Toast Message */
-        .toast {
-            position: fixed;
-            bottom: 100px;
-            left: 20px;
-            right: 20px;
-            background: #313244;
-            color: #cdd6f4;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            text-align: center;
-            z-index: 1000;
-            animation: slideUp 0.3s ease;
-            border-left: 4px solid #00ff88;
+        /* File Explorer Modal */
+        .file-list {
+            max-height: 300px;
+            overflow-y: auto;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .file-item {
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #313244;
+            cursor: pointer;
+        }
+
+        .file-item:active {
+            background: #313244;
+        }
+
+        .file-item i {
+            color: #00ff88;
+            width: 20px;
+        }
+
+        .file-item .file-actions {
+            margin-left: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-item .file-actions i {
+            color: #6c7086;
+            padding: 5px;
+        }
+
+        .file-item .file-actions i:active {
+            color: #f38ba8;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: #181825;
+            padding: 4px 12px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #6c7086;
+            border-top: 1px solid #313244;
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -307,37 +530,117 @@
         <div class="loading-spinner"></div>
     </div>
 
+    <!-- Context Menu -->
+    <div class="context-menu" id="contextMenu">
+        <div class="context-item" onclick="editorAction('selectAll')">
+            <i class="fas fa-check-double"></i> Seleccionar todo
+        </div>
+        <div class="context-item" onclick="editorAction('copy')">
+            <i class="fas fa-copy"></i> Copiar
+        </div>
+        <div class="context-item" onclick="editorAction('paste')">
+            <i class="fas fa-paste"></i> Pegar
+        </div>
+        <div class="context-item" onclick="editorAction('cut')">
+            <i class="fas fa-cut"></i> Cortar
+        </div>
+        <div class="context-divider"></div>
+        <div class="context-item" onclick="editorAction('undo')">
+            <i class="fas fa-undo"></i> Deshacer
+        </div>
+        <div class="context-item" onclick="editorAction('redo')">
+            <i class="fas fa-redo"></i> Rehacer
+        </div>
+        <div class="context-divider"></div>
+        <div class="context-item" onclick="editorAction('format')">
+            <i class="fas fa-align-left"></i> Formatear
+        </div>
+        <div class="context-item" onclick="editorAction('find')">
+            <i class="fas fa-search"></i> Buscar
+        </div>
+    </div>
+
+    <!-- New File Modal -->
+    <div class="modal" id="newFileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-file"></i> Nuevo Archivo</h3>
+                <i class="fas fa-times" onclick="closeModal('newFileModal')"></i>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="newFileName" placeholder="Nombre del archivo" value="NuevoArchivo.java">
+                <select id="newFileType">
+                    <option value="java">Java (.java)</option>
+                    <option value="yml">YAML (.yml)</option>
+                    <option value="txt">Texto (.txt)</option>
+                    <option value="json">JSON (.json)</option>
+                </select>
+                <button onclick="createNewFile()">Crear Archivo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Explorer Modal -->
+    <div class="modal" id="fileExplorerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-folder"></i> Explorador</h3>
+                <i class="fas fa-times" onclick="closeModal('fileExplorerModal')"></i>
+            </div>
+            <div class="modal-body">
+                <div class="file-list" id="fileList"></div>
+                <button onclick="openNewFileModal()" style="margin-top:15px;">
+                    <i class="fas fa-plus"></i> Nuevo Archivo
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="logo">
             <i class="fas fa-flask"></i>
-            <span>PluginLab</span>
+            <span>PluginLab PRO</span>
         </div>
         <div class="header-actions">
-            <button onclick="newProject()" title="Nuevo Proyecto">
-                <i class="fas fa-plus"></i>
+            <button onclick="openFileExplorer()" title="Explorador">
+                <i class="fas fa-folder"></i>
             </button>
-            <button class="btn-primary" onclick="showInfo()" title="Información">
-                <i class="fas fa-info"></i>
+            <button onclick="showContextMenu()" title="Menú">
+                <i class="fas fa-ellipsis-vertical"></i>
             </button>
         </div>
     </header>
 
-    <!-- File Selector -->
-    <div class="file-selector">
-        <div class="file-tab active" data-file="Main.java" onclick="switchFile('Main.java')">
-            <i class="fab fa-java"></i> Main.java
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-btn" onclick="editorAction('undo')">
+            <i class="fas fa-undo"></i> Deshacer
         </div>
-        <div class="file-tab" data-file="plugin.yml" onclick="switchFile('plugin.yml')">
-            <i class="fas fa-file-code"></i> plugin.yml
+        <div class="toolbar-btn" onclick="editorAction('redo')">
+            <i class="fas fa-redo"></i> Rehacer
         </div>
-        <div class="file-tab" data-file="config.yml" onclick="switchFile('config.yml')">
-            <i class="fas fa-cog"></i> config.yml
+        <div class="toolbar-btn" onclick="editorAction('selectAll')">
+            <i class="fas fa-check-double"></i> Seleccionar
+        </div>
+        <div class="toolbar-btn" onclick="copyAll()">
+            <i class="fas fa-copy"></i> Copiar todo
+        </div>
+        <div class="toolbar-btn" onclick="editorAction('format')">
+            <i class="fas fa-align-left"></i> Formatear
+        </div>
+        <div class="toolbar-btn warning" onclick="deleteCurrentFile()">
+            <i class="fas fa-trash"></i> Eliminar
         </div>
     </div>
 
+    <!-- File Tabs -->
+    <div class="file-tabs" id="fileTabs">
+        <!-- Las tabs se generan dinámicamente -->
+    </div>
+
     <!-- Editor -->
-    <div class="editor-container">
+    <div class="editor-container" id="editorContainer" oncontextmenu="showContextMenu(event); return false;">
         <div id="editor"></div>
     </div>
 
@@ -345,28 +648,33 @@
     <div class="console">
         <div class="console-header">
             <span><i class="fas fa-terminal"></i> Consola</span>
-            <i class="fas fa-trash-alt" onclick="clearConsole()"></i>
+            <div class="console-actions">
+                <i class="fas fa-copy" onclick="copyConsole()" title="Copiar"></i>
+                <i class="fas fa-trash-alt" onclick="clearConsole()" title="Limpiar"></i>
+                <i class="fas fa-chevron-up" onclick="toggleConsole()" title="Expandir"></i>
+            </div>
         </div>
         <div class="console-content" id="consoleContent">
-            > 🧪 PluginLab Mobile v1.0<br>
-            > 👨‍🔬 soyadrianyt001<br>
-            > 📱 Optimizado para iPhone
+            > 🧪 PluginLab PRO v2.0<br>
+            > 👨‍🔬 Creado por soyadrianyt001<br>
+            > ✅ Editor profesional listo
         </div>
     </div>
 
-    <!-- Bottom Actions -->
-    <div class="bottom-actions">
-        <button class="btn-compile" onclick="compilePlugin()">
-            <i class="fas fa-hammer"></i> Compilar
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span id="fileInfo">Main.java</span>
+        <span id="cursorPosition">Ln 1, Col 1</span>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+        <button class="btn-run" onclick="compilePlugin()">
+            <i class="fas fa-play"></i> Compilar
         </button>
         <button class="btn-download" onclick="downloadPlugin()" id="downloadBtn" disabled>
             <i class="fas fa-download"></i> Descargar
         </button>
-    </div>
-
-    <!-- Autor -->
-    <div class="author-badge">
-        <i class="fas fa-flask"></i> PluginLab by soyadrianyt001 <i class="fas fa-flask"></i>
     </div>
 
     <!-- Scripts -->
@@ -374,15 +682,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     
     <script>
-        // Variables
+        // ===== VARIABLES GLOBALES =====
         let editor;
         let pluginJar = null;
-        let currentFile = 'Main.java';
-        let monacoLoaded = false;
+        let openTabs = [];
+        let activeTab = null;
+        let fileContents = {};
+        let consoleExpanded = false;
 
-        // Contenido de archivos
-        const files = {
-            'Main.java': `package com.pluginlab.plugin;
+        // Archivos iniciales
+        const initialFiles = {
+            'Main.java': {
+                content: `package com.pluginlab.plugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -390,120 +701,310 @@ public class Main extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        getLogger().info("🧪 Plugin creado con PluginLab Mobile!");
+        getLogger().info("🧪 Plugin creado con PluginLab PRO!");
         getLogger().info("👨‍🔬 Creado por soyadrianyt001");
-        getLogger().info("📱 v1.0 - Optimizado para iPhone");
+        getLogger().info("✅ v2.0 - Editor Profesional");
     }
     
     @Override
     public void onDisable() {
-        getLogger().info("PluginLab - Plugin desactivado");
+        getLogger().info("PluginLab PRO - Plugin desactivado");
     }
 }`,
-            'plugin.yml': `name: MiPlugin
+                language: 'java'
+            },
+            'plugin.yml': {
+                content: `name: MiPlugin
 version: 1.0
 main: com.pluginlab.plugin.Main
 api-version: "1.20"
-description: Plugin creado con PluginLab Mobile
+description: Plugin creado con PluginLab PRO
 author: soyadrianyt001
 website: pluginlab.vercel.app`,
-            'config.yml': `# Configuración de MiPlugin
-# Creado con PluginLab Mobile
+                language: 'yaml'
+            },
+            'config.yml': {
+                content: `# Configuración de MiPlugin
+# Creado con PluginLab PRO
 
 plugin:
   enabled: true
   debug: false
-  mensaje-bienvenida: "&aBienvenido al servidor!"
+  mensaje-bienvenida: "&aBienvenido!"
   
-# Creado por soyadrianyt001`
+# 👨‍🔬 soyadrianyt001`,
+                language: 'yaml'
+            }
         };
 
-        // Toast
-        function showToast(message, isError = false) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.style.borderLeftColor = isError ? '#f38ba8' : '#00ff88';
-            toast.innerHTML = message;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
-        }
-
-        // Info
-        function showInfo() {
-            showToast('🧪 PluginLab Mobile v1.0<br>👨‍🔬 Creado por soyadrianyt001<br>📱 Editor para iPhone');
-        }
-
-        // Consola
-        function logConsole(message) {
-            const consoleContent = document.getElementById('consoleContent');
-            consoleContent.innerHTML += '<br>> ' + message;
-            consoleContent.scrollTop = consoleContent.scrollHeight;
-        }
-
-        function clearConsole() {
-            document.getElementById('consoleContent').innerHTML = '> 🧪 Consola limpiada';
-        }
-
-        // Cambiar archivo
-        function switchFile(fileName) {
-            currentFile = fileName;
-            
-            // Actualizar tabs
-            document.querySelectorAll('.file-tab').forEach(tab => {
-                tab.classList.remove('active');
-                if (tab.getAttribute('data-file') === fileName) {
-                    tab.classList.add('active');
-                }
+        // ===== INICIALIZACIÓN =====
+        function init() {
+            // Cargar archivos iniciales
+            Object.keys(initialFiles).forEach(fileName => {
+                fileContents[fileName] = initialFiles[fileName].content;
+                openTab(fileName);
             });
             
-            // Cambiar lenguaje y contenido
-            if (editor) {
-                if (fileName === 'plugin.yml' || fileName === 'config.yml') {
-                    monaco.editor.setModelLanguage(editor.getModel(), 'yaml');
-                } else {
-                    monaco.editor.setModelLanguage(editor.getModel(), 'java');
-                }
-                editor.setValue(files[fileName]);
-            }
-            
-            logConsole('📁 Abierto: ' + fileName);
-        }
-
-        // Nuevo proyecto
-        function newProject() {
-            if (confirm('🧪 ¿Crear nuevo proyecto?')) {
-                editor.setValue(files['Main.java']);
-                document.getElementById('downloadBtn').disabled = true;
-                pluginJar = null;
-                currentFile = 'Main.java';
-                document.querySelectorAll('.file-tab').forEach(tab => {
-                    tab.classList.remove('active');
-                    if (tab.getAttribute('data-file') === 'Main.java') {
-                        tab.classList.add('active');
+            // Inicializar Monaco
+            require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' } });
+            require(['vs/editor/editor.main'], function () {
+                editor = monaco.editor.create(document.getElementById('editor'), {
+                    value: fileContents['Main.java'],
+                    language: 'java',
+                    theme: 'vs-dark',
+                    automaticLayout: true,
+                    fontSize: 14,
+                    minimap: { enabled: false },
+                    lineNumbers: 'on',
+                    glyphMargin: true,
+                    folding: true,
+                    contextmenu: false
+                });
+                
+                // Eventos del editor
+                editor.onDidChangeModelContent(() => {
+                    if (activeTab) {
+                        fileContents[activeTab] = editor.getValue();
                     }
                 });
-                logConsole('🆕 Nuevo proyecto creado');
-                showToast('✨ Nuevo proyecto creado');
+                
+                editor.onDidChangeCursorPosition((e) => {
+                    document.getElementById('cursorPosition').textContent = 
+                        `Ln ${e.position.lineNumber}, Col ${e.position.column}`;
+                });
+                
+                document.getElementById('loading').style.display = 'none';
+                logConsole('🧪 PluginLab PRO inicializado');
+                logConsole('👨‍🔬 Creado por soyadrianyt001');
+            });
+        }
+
+        // ===== GESTIÓN DE PESTAÑAS =====
+        function openTab(fileName) {
+            if (!openTabs.includes(fileName)) {
+                openTabs.push(fileName);
+            }
+            activeTab = fileName;
+            renderTabs();
+            
+            // Actualizar editor
+            if (editor) {
+                const file = initialFiles[fileName] || { language: 'text' };
+                const language = fileName.endsWith('.java') ? 'java' : 
+                                fileName.endsWith('.yml') ? 'yaml' :
+                                fileName.endsWith('.json') ? 'json' : 'text';
+                
+                monaco.editor.setModelLanguage(editor.getModel(), language);
+                editor.setValue(fileContents[fileName] || '');
+            }
+            
+            document.getElementById('fileInfo').textContent = fileName;
+        }
+
+        function closeTab(fileName) {
+            const index = openTabs.indexOf(fileName);
+            if (index > -1) {
+                openTabs.splice(index, 1);
+            }
+            
+            if (activeTab === fileName) {
+                if (openTabs.length > 0) {
+                    openTab(openTabs[Math.max(0, index - 1)]);
+                } else {
+                    activeTab = null;
+                    editor.setValue('');
+                }
+            }
+            
+            renderTabs();
+        }
+
+        function renderTabs() {
+            const container = document.getElementById('fileTabs');
+            container.innerHTML = '';
+            
+            openTabs.forEach(fileName => {
+                const tab = document.createElement('div');
+                tab.className = 'tab' + (fileName === activeTab ? ' active' : '');
+                tab.onclick = () => openTab(fileName);
+                
+                const icon = fileName.endsWith('.java') ? 'fa-java' : 
+                            fileName.endsWith('.yml') ? 'fa-file-code' : 'fa-file';
+                
+                tab.innerHTML = `
+                    <i class="fab ${icon}"></i>
+                    <span>${fileName}</span>
+                    <span class="close-tab" onclick="event.stopPropagation(); closeTab('${fileName}')">
+                        <i class="fas fa-times"></i>
+                    </span>
+                `;
+                
+                container.appendChild(tab);
+            });
+            
+            // Botón añadir
+            const addBtn = document.createElement('div');
+            addBtn.className = 'add-tab';
+            addBtn.innerHTML = '<i class="fas fa-plus"></i>';
+            addBtn.onclick = openNewFileModal;
+            container.appendChild(addBtn);
+        }
+
+        // ===== ACCIONES DEL EDITOR =====
+        function editorAction(action) {
+            if (!editor) return;
+            
+            switch(action) {
+                case 'selectAll':
+                    editor.trigger('keyboard', 'editor.action.selectAll');
+                    showToast('✅ Todo seleccionado');
+                    break;
+                case 'copy':
+                    editor.trigger('keyboard', 'editor.action.clipboardCopyAction');
+                    showToast('📋 Copiado');
+                    break;
+                case 'paste':
+                    editor.trigger('keyboard', 'editor.action.clipboardPasteAction');
+                    showToast('📋 Pegado');
+                    break;
+                case 'cut':
+                    editor.trigger('keyboard', 'editor.action.clipboardCutAction');
+                    showToast('✂️ Cortado');
+                    break;
+                case 'undo':
+                    editor.trigger('keyboard', 'undo');
+                    break;
+                case 'redo':
+                    editor.trigger('keyboard', 'redo');
+                    break;
+                case 'format':
+                    editor.trigger('keyboard', 'editor.action.formatDocument');
+                    showToast('📄 Formateado');
+                    break;
+                case 'find':
+                    editor.trigger('keyboard', 'actions.find');
+                    break;
+            }
+            
+            hideContextMenu();
+        }
+
+        function copyAll() {
+            if (editor) {
+                editor.trigger('keyboard', 'editor.action.selectAll');
+                editor.trigger('keyboard', 'editor.action.clipboardCopyAction');
+                editor.trigger('keyboard', 'cancelSelection');
+                showToast('📋 Todo el código copiado');
             }
         }
 
-        // Compilar
+        // ===== GESTIÓN DE ARCHIVOS =====
+        function openNewFileModal() {
+            document.getElementById('newFileModal').classList.add('active');
+        }
+
+        function createNewFile() {
+            const nameInput = document.getElementById('newFileName');
+            const typeSelect = document.getElementById('newFileType');
+            
+            let fileName = nameInput.value.trim();
+            if (!fileName) {
+                showToast('❌ Nombre requerido', true);
+                return;
+            }
+            
+            // Añadir extensión según tipo
+            const ext = typeSelect.value === 'java' ? '.java' : 
+                       typeSelect.value === 'yml' ? '.yml' :
+                       typeSelect.value === 'json' ? '.json' : '.txt';
+            
+            if (!fileName.includes('.')) {
+                fileName += ext;
+            }
+            
+            if (fileContents[fileName]) {
+                showToast('⚠️ El archivo ya existe', true);
+                return;
+            }
+            
+            // Contenido por defecto
+            let defaultContent = '';
+            if (fileName.endsWith('.java')) {
+                defaultContent = `public class ${fileName.replace('.java', '')} {\n    \n}`;
+            }
+            
+            fileContents[fileName] = defaultContent;
+            openTab(fileName);
+            closeModal('newFileModal');
+            showToast(`✅ ${fileName} creado`);
+            logConsole(`📄 Archivo creado: ${fileName}`);
+        }
+
+        function deleteCurrentFile() {
+            if (!activeTab) return;
+            
+            if (confirm(`🗑️ ¿Eliminar ${activeTab}?`)) {
+                delete fileContents[activeTab];
+                closeTab(activeTab);
+                showToast(`🗑️ ${activeTab} eliminado`);
+                logConsole(`🗑️ Archivo eliminado: ${activeTab}`);
+            }
+        }
+
+        function openFileExplorer() {
+            const listContainer = document.getElementById('fileList');
+            listContainer.innerHTML = '';
+            
+            Object.keys(fileContents).forEach(fileName => {
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                item.innerHTML = `
+                    <i class="fas fa-file"></i>
+                    <span>${fileName}</span>
+                    <div class="file-actions">
+                        <i class="fas fa-eye" onclick="event.stopPropagation(); openTab('${fileName}'); closeModal('fileExplorerModal')"></i>
+                        <i class="fas fa-trash" onclick="event.stopPropagation(); deleteFile('${fileName}')"></i>
+                    </div>
+                `;
+                item.onclick = () => {
+                    openTab(fileName);
+                    closeModal('fileExplorerModal');
+                };
+                listContainer.appendChild(item);
+            });
+            
+            document.getElementById('fileExplorerModal').classList.add('active');
+        }
+
+        function deleteFile(fileName) {
+            if (confirm(`🗑️ ¿Eliminar ${fileName}?`)) {
+                delete fileContents[fileName];
+                closeTab(fileName);
+                openFileExplorer();
+                showToast(`🗑️ ${fileName} eliminado`);
+            }
+        }
+
+        // ===== COMPILACIÓN =====
         async function compilePlugin() {
-            logConsole('⚡ Compilando...');
-            showToast('🔨 Compilando plugin...');
+            logConsole('⚡ Iniciando compilación...');
+            showToast('🔨 Compilando...');
             
             try {
                 const zip = new JSZip();
                 
-                // Obtener contenido actual
-                const mainJava = currentFile === 'Main.java' ? editor.getValue() : files['Main.java'];
-                const pluginYml = currentFile === 'plugin.yml' ? editor.getValue() : files['plugin.yml'];
-                const configYml = files['config.yml'];
-                
-                // Estructura
-                zip.folder('src/main/java/com/pluginlab/plugin/').file('Main.java', mainJava);
-                zip.folder('src/main/resources/').file('plugin.yml', pluginYml);
-                zip.folder('src/main/resources/').file('config.yml', configYml);
+                // Añadir todos los archivos
+                Object.keys(fileContents).forEach(fileName => {
+                    if (fileName.endsWith('.java')) {
+                        zip.folder('src/main/java/com/pluginlab/plugin/').file(fileName, fileContents[fileName]);
+                    } else if (fileName === 'plugin.yml') {
+                        zip.folder('src/main/resources/').file('plugin.yml', fileContents[fileName]);
+                    } else if (fileName === 'config.yml') {
+                        zip.folder('src/main/resources/').file('config.yml', fileContents[fileName]);
+                    } else if (fileName.endsWith('.yml')) {
+                        zip.folder('src/main/resources/').file(fileName, fileContents[fileName]);
+                    }
+                });
                 
                 // pom.xml
                 const pomXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -533,7 +1034,7 @@ plugin:
 </project>`;
                 
                 zip.file('pom.xml', pomXml);
-                zip.file('README.md', `# MiPlugin\nPlugin creado con **🧪 PluginLab Mobile**\n👨‍🔬 Creado por: soyadrianyt001\n📱 v1.0`);
+                zip.file('README.md', `# MiPlugin\nPlugin creado con **🧪 PluginLab PRO**\n👨‍🔬 Creado por: soyadrianyt001\n✅ v2.0`);
                 
                 const content = await zip.generateAsync({ type: 'blob' });
                 
@@ -541,8 +1042,8 @@ plugin:
                 document.getElementById('downloadBtn').disabled = false;
                 
                 logConsole('✅ ¡Compilación exitosa!');
-                logConsole('📦 MiPlugin-1.0.zip listo');
-                showToast('✅ Plugin compilado correctamente');
+                logConsole('📦 Plugin listo para descargar');
+                showToast('✅ Plugin compilado');
                 
             } catch (error) {
                 logConsole('❌ Error: ' + error.message);
@@ -550,47 +1051,86 @@ plugin:
             }
         }
 
-        // Descargar
         function downloadPlugin() {
             if (pluginJar) {
                 const url = URL.createObjectURL(pluginJar);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'MiPlugin-1.0.zip';
+                a.download = 'MiPlugin-PRO.zip';
                 a.click();
                 logConsole('📥 Plugin descargado');
                 showToast('📥 Descarga iniciada');
             }
         }
 
-        // Inicializar Monaco
-        require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' } });
-        require(['vs/editor/editor.main'], function () {
-            editor = monaco.editor.create(document.getElementById('editor'), {
-                value: files['Main.java'],
-                language: 'java',
-                theme: 'vs-dark',
-                automaticLayout: true,
-                fontSize: 14,
-                minimap: { enabled: false },
-                lineNumbers: 'on',
-                glyphMargin: false,
-                folding: true,
-                lineDecorationsWidth: 10,
-                lineNumbersMinChars: 3,
-                scrollBeyondLastLine: false,
-                renderWhitespace: 'selection'
-            });
+        // ===== CONSOLA =====
+        function logConsole(message) {
+            const consoleContent = document.getElementById('consoleContent');
+            consoleContent.innerHTML += '<br>> ' + message;
+            consoleContent.scrollTop = consoleContent.scrollHeight;
+        }
+
+        function clearConsole() {
+            document.getElementById('consoleContent').innerHTML = '> 🧪 Consola limpiada';
+        }
+
+        function copyConsole() {
+            const content = document.getElementById('consoleContent').innerText;
+            navigator.clipboard?.writeText(content);
+            showToast('📋 Consola copiada');
+        }
+
+        function toggleConsole() {
+            const consoleEl = document.querySelector('.console');
+            const content = document.querySelector('.console-content');
             
-            monacoLoaded = true;
-            document.getElementById('loading').style.display = 'none';
-            logConsole('🧪 Editor listo');
+            if (consoleExpanded) {
+                consoleEl.style.maxHeight = '150px';
+                content.style.maxHeight = '130px';
+            } else {
+                consoleEl.style.maxHeight = '400px';
+                content.style.maxHeight = '380px';
+            }
+            consoleExpanded = !consoleExpanded;
+        }
+
+        // ===== UI =====
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = 'toast' + (isError ? ' error' : '');
+            toast.innerHTML = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+
+        function showContextMenu(event) {
+            if (event) event.preventDefault();
+            const menu = document.getElementById('contextMenu');
+            menu.classList.add('active');
+            
+            if (event) {
+                menu.style.left = event.touches?.[0]?.clientX + 'px' || event.clientX + 'px';
+                menu.style.top = event.touches?.[0]?.clientY + 'px' || event.clientY + 'px';
+            }
+        }
+
+        function hideContextMenu() {
+            document.getElementById('contextMenu').classList.remove('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Click outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.context-menu')) {
+                hideContextMenu();
+            }
         });
 
-        // Ocultar loading si tarda
-        setTimeout(() => {
-            document.getElementById('loading').style.display = 'none';
-        }, 3000);
+        // Iniciar
+        init();
     </script>
 </body>
 </html>
