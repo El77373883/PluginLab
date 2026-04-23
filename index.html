@@ -2,8 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧪 PluginLab - Creador de Plugins Minecraft</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1e1e2e">
+    <title>🧪 PluginLab Mobile</title>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,194 +19,145 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #1e1e2e;
             color: #cdd6f4;
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            grid-template-rows: 60px 1fr 200px;
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
         }
 
-        /* Header */
+        /* Header Mobile */
         header {
-            grid-column: 1 / -1;
             background: #181825;
             border-bottom: 1px solid #313244;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            flex-shrink: 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 20px;
+            gap: 8px;
+            font-size: 18px;
             font-weight: bold;
-            color: #00ff88;
         }
 
         .logo i {
-            font-size: 24px;
+            color: #00ff88;
+            font-size: 22px;
         }
 
         .logo span {
             background: linear-gradient(135deg, #00ff88, #00cc6a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .header-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
-        button {
-            padding: 8px 16px;
+        .header-actions button {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
+            background: #313244;
+            color: #cdd6f4;
+            font-size: 16px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
             transition: all 0.2s;
         }
 
-        .btn-primary {
+        .header-actions button.btn-primary {
             background: #00ff88;
             color: #181825;
         }
 
-        .btn-primary:hover {
-            background: #00cc6a;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        .header-actions button:active {
+            transform: scale(0.95);
         }
 
-        .btn-secondary {
-            background: #313244;
-            color: #cdd6f4;
-        }
-
-        .btn-secondary:hover {
-            background: #45475a;
-        }
-
-        .btn-success {
-            background: #a6e3a1;
-            color: #181825;
-        }
-
-        .btn-success:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .btn-success:hover:not(:disabled) {
-            background: #00ff88;
-        }
-
-        /* Sidebar */
-        .sidebar {
+        /* File Selector Mobile */
+        .file-selector {
             background: #181825;
-            border-right: 1px solid #313244;
-            padding: 15px;
-            overflow-y: auto;
-        }
-
-        .file-explorer h3 {
-            font-size: 12px;
-            color: #6c7086;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .folder {
-            color: #00ff88;
-            margin-bottom: 5px;
-            cursor: pointer;
-        }
-
-        .folder i {
-            margin-right: 8px;
-            width: 16px;
-        }
-
-        .folder-content {
-            margin-left: 24px;
-            margin-top: 5px;
-        }
-
-        .file {
-            color: #cdd6f4;
-            padding: 4px 8px;
-            margin: 2px 0;
-            border-radius: 4px;
-            cursor: pointer;
+            padding: 10px 15px;
             display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .file i {
-            color: #f9e2af;
-            width: 16px;
-        }
-
-        .file.active {
-            background: #313244;
-            color: #00ff88;
-        }
-
-        .file:hover {
-            background: #313244;
-        }
-
-        /* Editor */
-        .editor-container {
-            background: #1e1e2e;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .editor-tabs {
-            background: #181825;
-            padding: 0 15px;
+            gap: 10px;
             border-bottom: 1px solid #313244;
-            display: flex;
+            flex-shrink: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .tab {
-            padding: 10px 20px;
+        .file-selector::-webkit-scrollbar {
+            display: none;
+        }
+
+        .file-tab {
+            padding: 8px 16px;
             background: #1e1e2e;
-            border-right: 1px solid #313244;
-            font-size: 13px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
             cursor: pointer;
+            border: 1px solid #313244;
+            transition: all 0.2s;
         }
 
-        .tab.active {
-            background: #313244;
-            border-top: 2px solid #00ff88;
+        .file-tab i {
+            margin-right: 6px;
+            font-size: 12px;
+        }
+
+        .file-tab.active {
+            background: #00ff88;
+            color: #181825;
+            border-color: #00ff88;
+        }
+
+        .file-tab .fa-java {
+            color: #f9e2af;
+        }
+
+        .file-tab.active .fa-java {
+            color: #181825;
+        }
+
+        /* Editor Container */
+        .editor-container {
+            flex: 1;
+            background: #1e1e2e;
+            overflow: hidden;
+            position: relative;
         }
 
         #editor {
-            flex: 1;
             width: 100%;
+            height: 100%;
         }
 
-        /* Console */
+        /* Console Mobile */
         .console {
-            grid-column: 1 / -1;
             background: #181825;
             border-top: 1px solid #313244;
+            flex-shrink: 0;
+            max-height: 180px;
             display: flex;
             flex-direction: column;
         }
@@ -215,47 +169,144 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #313244;
+            font-size: 13px;
         }
 
         .console-header i {
             cursor: pointer;
             color: #6c7086;
+            padding: 5px;
         }
 
-        .console-header i:hover {
+        .console-header i:active {
             color: #f38ba8;
         }
 
         .console-content {
-            flex: 1;
             padding: 10px 15px;
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 13px;
+            font-family: 'Menlo', 'Monaco', monospace;
+            font-size: 11px;
             overflow-y: auto;
             color: #00ff88;
+            line-height: 1.5;
+            max-height: 150px;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Badge */
-        .author-badge {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
+        /* Bottom Actions */
+        .bottom-actions {
             background: #181825;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 10px 15px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #313244;
+            flex-shrink: 0;
+        }
+
+        .bottom-actions button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .bottom-actions button:active {
+            transform: scale(0.98);
+        }
+
+        .btn-compile {
+            background: #00ff88;
+            color: #181825;
+        }
+
+        .btn-download {
+            background: #313244;
+            color: #cdd6f4;
+        }
+
+        .btn-download:disabled {
+            opacity: 0.5;
+        }
+
+        /* Autor Badge */
+        .author-badge {
+            text-align: center;
+            padding: 5px;
+            font-size: 11px;
             color: #6c7086;
-            border: 1px solid #313244;
-            z-index: 1000;
+            background: #181825;
+            flex-shrink: 0;
         }
 
         .author-badge i {
             color: #00ff88;
-            margin-right: 5px;
+            margin: 0 3px;
+        }
+
+        /* Loading */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #1e1e2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #313244;
+            border-top-color: #00ff88;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Toast Message */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            right: 20px;
+            background: #313244;
+            color: #cdd6f4;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            text-align: center;
+            z-index: 1000;
+            animation: slideUp 0.3s ease;
+            border-left: 4px solid #00ff88;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="logo">
@@ -263,67 +314,59 @@
             <span>PluginLab</span>
         </div>
         <div class="header-actions">
-            <button class="btn-secondary" onclick="newProject()">
-                <i class="fas fa-plus"></i> Nuevo
+            <button onclick="newProject()" title="Nuevo Proyecto">
+                <i class="fas fa-plus"></i>
             </button>
-            <button class="btn-primary" onclick="compilePlugin()">
-                <i class="fas fa-hammer"></i> Compilar
-            </button>
-            <button class="btn-success" onclick="downloadPlugin()" id="downloadBtn" disabled>
-                <i class="fas fa-download"></i> Descargar
+            <button class="btn-primary" onclick="showInfo()" title="Información">
+                <i class="fas fa-info"></i>
             </button>
         </div>
     </header>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="file-explorer">
-            <h3>🧪 EXPLORADOR</h3>
-            <div class="file-tree">
-                <div class="folder">
-                    <i class="fas fa-folder-open"></i> src/main/java/
-                    <div class="folder-content">
-                        <div class="file active" data-file="Main.java">
-                            <i class="fab fa-java"></i> Main.java
-                        </div>
-                    </div>
-                </div>
-                <div class="folder">
-                    <i class="fas fa-folder"></i> src/main/resources/
-                    <div class="folder-content">
-                        <div class="file" data-file="plugin.yml">
-                            <i class="fas fa-file-code"></i> plugin.yml
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- File Selector -->
+    <div class="file-selector">
+        <div class="file-tab active" data-file="Main.java" onclick="switchFile('Main.java')">
+            <i class="fab fa-java"></i> Main.java
         </div>
-    </aside>
+        <div class="file-tab" data-file="plugin.yml" onclick="switchFile('plugin.yml')">
+            <i class="fas fa-file-code"></i> plugin.yml
+        </div>
+        <div class="file-tab" data-file="config.yml" onclick="switchFile('config.yml')">
+            <i class="fas fa-cog"></i> config.yml
+        </div>
+    </div>
 
     <!-- Editor -->
-    <main class="editor-container">
-        <div class="editor-tabs">
-            <span class="tab active">Main.java</span>
-        </div>
+    <div class="editor-container">
         <div id="editor"></div>
-    </main>
+    </div>
 
-    <!-- Consola -->
-    <footer class="console">
+    <!-- Console -->
+    <div class="console">
         <div class="console-header">
-            <span><i class="fas fa-terminal"></i> Consola de Laboratorio</span>
-            <i class="fas fa-times" onclick="clearConsole()"></i>
+            <span><i class="fas fa-terminal"></i> Consola</span>
+            <i class="fas fa-trash-alt" onclick="clearConsole()"></i>
         </div>
         <div class="console-content" id="consoleContent">
-            > 🧪 PluginLab v1.0 - Laboratorio de Plugins<br>
-            > 👨‍🔬 Creado por soyadrianyt001<br>
-            > ⚡ Listo para crear plugins
+            > 🧪 PluginLab Mobile v1.0<br>
+            > 👨‍🔬 soyadrianyt001<br>
+            > 📱 Optimizado para iPhone
         </div>
-    </footer>
+    </div>
 
-    <!-- Badge -->
+    <!-- Bottom Actions -->
+    <div class="bottom-actions">
+        <button class="btn-compile" onclick="compilePlugin()">
+            <i class="fas fa-hammer"></i> Compilar
+        </button>
+        <button class="btn-download" onclick="downloadPlugin()" id="downloadBtn" disabled>
+            <i class="fas fa-download"></i> Descargar
+        </button>
+    </div>
+
+    <!-- Autor -->
     <div class="author-badge">
-        <i class="fas fa-flask"></i> PluginLab by soyadrianyt001
+        <i class="fas fa-flask"></i> PluginLab by soyadrianyt001 <i class="fas fa-flask"></i>
     </div>
 
     <!-- Scripts -->
@@ -331,13 +374,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     
     <script>
-        // Variables globales
+        // Variables
         let editor;
         let pluginJar = null;
         let currentFile = 'Main.java';
+        let monacoLoaded = false;
 
-        // Código inicial
-        const defaultMainJava = `package com.pluginlab.plugin;
+        // Contenido de archivos
+        const files = {
+            'Main.java': `package com.pluginlab.plugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -345,42 +390,50 @@ public class Main extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        getLogger().info("🧪 Plugin creado con PluginLab!");
+        getLogger().info("🧪 Plugin creado con PluginLab Mobile!");
         getLogger().info("👨‍🔬 Creado por soyadrianyt001");
-        getLogger().info("⚡ v1.0 - Laboratorio de Plugins");
+        getLogger().info("📱 v1.0 - Optimizado para iPhone");
     }
     
     @Override
     public void onDisable() {
         getLogger().info("PluginLab - Plugin desactivado");
     }
-}`;
-
-        const defaultPluginYml = `name: MiPlugin
+}`,
+            'plugin.yml': `name: MiPlugin
 version: 1.0
 main: com.pluginlab.plugin.Main
 api-version: "1.20"
-description: Plugin creado con PluginLab
+description: Plugin creado con PluginLab Mobile
 author: soyadrianyt001
-website: pluginlab.vercel.app`;
+website: pluginlab.vercel.app`,
+            'config.yml': `# Configuración de MiPlugin
+# Creado con PluginLab Mobile
 
-        // Inicializar Monaco Editor
-        require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' } });
-        require(['vs/editor/editor.main'], function () {
-            editor = monaco.editor.create(document.getElementById('editor'), {
-                value: defaultMainJava,
-                language: 'java',
-                theme: 'vs-dark',
-                automaticLayout: true,
-                fontSize: 14,
-                minimap: { enabled: false }
-            });
-            
-            logConsole('🧪 Editor inicializado correctamente');
-            logConsole('📁 Archivo abierto: Main.java');
-        });
+plugin:
+  enabled: true
+  debug: false
+  mensaje-bienvenida: "&aBienvenido al servidor!"
+  
+# Creado por soyadrianyt001`
+        };
 
-        // Función para log en consola
+        // Toast
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.style.borderLeftColor = isError ? '#f38ba8' : '#00ff88';
+            toast.innerHTML = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // Info
+        function showInfo() {
+            showToast('🧪 PluginLab Mobile v1.0<br>👨‍🔬 Creado por soyadrianyt001<br>📱 Editor para iPhone');
+        }
+
+        // Consola
         function logConsole(message) {
             const consoleContent = document.getElementById('consoleContent');
             consoleContent.innerHTML += '<br>> ' + message;
@@ -391,53 +444,66 @@ website: pluginlab.vercel.app`;
             document.getElementById('consoleContent').innerHTML = '> 🧪 Consola limpiada';
         }
 
-        // Cambiar entre archivos
-        document.querySelectorAll('.file').forEach(file => {
-            file.addEventListener('click', function() {
-                document.querySelectorAll('.file').forEach(f => f.classList.remove('active'));
-                this.classList.add('active');
-                
-                const fileName = this.getAttribute('data-file');
-                currentFile = fileName;
-                document.querySelector('.tab.active').textContent = fileName;
-                
-                if (fileName === 'plugin.yml') {
+        // Cambiar archivo
+        function switchFile(fileName) {
+            currentFile = fileName;
+            
+            // Actualizar tabs
+            document.querySelectorAll('.file-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.getAttribute('data-file') === fileName) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            // Cambiar lenguaje y contenido
+            if (editor) {
+                if (fileName === 'plugin.yml' || fileName === 'config.yml') {
                     monaco.editor.setModelLanguage(editor.getModel(), 'yaml');
-                    editor.setValue(defaultPluginYml);
                 } else {
                     monaco.editor.setModelLanguage(editor.getModel(), 'java');
-                    editor.setValue(defaultMainJava);
                 }
-                
-                logConsole('📁 Archivo abierto: ' + fileName);
-            });
-        });
+                editor.setValue(files[fileName]);
+            }
+            
+            logConsole('📁 Abierto: ' + fileName);
+        }
 
         // Nuevo proyecto
         function newProject() {
-            if (confirm('🧪 ¿Crear nuevo proyecto? Se perderán los cambios no guardados.')) {
-                editor.setValue(defaultMainJava);
+            if (confirm('🧪 ¿Crear nuevo proyecto?')) {
+                editor.setValue(files['Main.java']);
                 document.getElementById('downloadBtn').disabled = true;
                 pluginJar = null;
+                currentFile = 'Main.java';
+                document.querySelectorAll('.file-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                    if (tab.getAttribute('data-file') === 'Main.java') {
+                        tab.classList.add('active');
+                    }
+                });
                 logConsole('🆕 Nuevo proyecto creado');
-                logConsole('🧪 PluginLab - Listo para crear');
+                showToast('✨ Nuevo proyecto creado');
             }
         }
 
-        // Compilar plugin
+        // Compilar
         async function compilePlugin() {
-            logConsole('⚡ Iniciando compilación en PluginLab...');
+            logConsole('⚡ Compilando...');
+            showToast('🔨 Compilando plugin...');
             
             try {
                 const zip = new JSZip();
                 
-                // Obtener código actual
-                const mainJava = currentFile === 'Main.java' ? editor.getValue() : defaultMainJava;
-                const pluginYml = currentFile === 'plugin.yml' ? editor.getValue() : defaultPluginYml;
+                // Obtener contenido actual
+                const mainJava = currentFile === 'Main.java' ? editor.getValue() : files['Main.java'];
+                const pluginYml = currentFile === 'plugin.yml' ? editor.getValue() : files['plugin.yml'];
+                const configYml = files['config.yml'];
                 
-                // Estructura del plugin
+                // Estructura
                 zip.folder('src/main/java/com/pluginlab/plugin/').file('Main.java', mainJava);
                 zip.folder('src/main/resources/').file('plugin.yml', pluginYml);
+                zip.folder('src/main/resources/').file('config.yml', configYml);
                 
                 // pom.xml
                 const pomXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -467,37 +533,24 @@ website: pluginlab.vercel.app`;
 </project>`;
                 
                 zip.file('pom.xml', pomXml);
+                zip.file('README.md', `# MiPlugin\nPlugin creado con **🧪 PluginLab Mobile**\n👨‍🔬 Creado por: soyadrianyt001\n📱 v1.0`);
                 
-                // README.md
-                const readme = `# MiPlugin
-Plugin creado con **🧪 PluginLab**  
-👨‍🔬 Creado por: soyadrianyt001  
-🌐 pluginlab.vercel.app`;
-                
-                zip.file('README.md', readme);
-                
-                // Generar ZIP
-                logConsole('📦 Empaquetando proyecto...');
                 const content = await zip.generateAsync({ type: 'blob' });
                 
-                logConsole('🔨 Compilando con Maven...');
-                logConsole('🧪 Procesando dependencias...');
+                pluginJar = content;
+                document.getElementById('downloadBtn').disabled = false;
                 
-                setTimeout(() => {
-                    pluginJar = content;
-                    document.getElementById('downloadBtn').disabled = false;
-                    logConsole('✅ ¡Compilación exitosa!');
-                    logConsole('📁 MiPlugin-1.0.zip generado');
-                    logConsole('🧪 Plugin listo para descargar');
-                    logConsole('👨‍🔬 Creado con PluginLab by soyadrianyt001');
-                }, 2000);
+                logConsole('✅ ¡Compilación exitosa!');
+                logConsole('📦 MiPlugin-1.0.zip listo');
+                showToast('✅ Plugin compilado correctamente');
                 
             } catch (error) {
-                logConsole('❌ Error en compilación: ' + error.message);
+                logConsole('❌ Error: ' + error.message);
+                showToast('❌ Error en compilación', true);
             }
         }
 
-        // Descargar plugin
+        // Descargar
         function downloadPlugin() {
             if (pluginJar) {
                 const url = URL.createObjectURL(pluginJar);
@@ -505,15 +558,39 @@ Plugin creado con **🧪 PluginLab**
                 a.href = url;
                 a.download = 'MiPlugin-1.0.zip';
                 a.click();
-                logConsole('📥 Plugin descargado - PluginLab');
-                logConsole('👨‍🔬 ¡Gracias por usar PluginLab!');
+                logConsole('📥 Plugin descargado');
+                showToast('📥 Descarga iniciada');
             }
         }
 
-        // Mensaje inicial
+        // Inicializar Monaco
+        require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' } });
+        require(['vs/editor/editor.main'], function () {
+            editor = monaco.editor.create(document.getElementById('editor'), {
+                value: files['Main.java'],
+                language: 'java',
+                theme: 'vs-dark',
+                automaticLayout: true,
+                fontSize: 14,
+                minimap: { enabled: false },
+                lineNumbers: 'on',
+                glyphMargin: false,
+                folding: true,
+                lineDecorationsWidth: 10,
+                lineNumbersMinChars: 3,
+                scrollBeyondLastLine: false,
+                renderWhitespace: 'selection'
+            });
+            
+            monacoLoaded = true;
+            document.getElementById('loading').style.display = 'none';
+            logConsole('🧪 Editor listo');
+        });
+
+        // Ocultar loading si tarda
         setTimeout(() => {
-            logConsole('👨‍🔬 Creado por soyadrianyt001');
-        }, 500);
+            document.getElementById('loading').style.display = 'none';
+        }, 3000);
     </script>
 </body>
 </html>
